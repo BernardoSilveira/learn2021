@@ -5,22 +5,27 @@ class LinkedList {
     }
 
     addNode(newNodeData) {
-        console.log("!" + this.head.data);
         while (this.head.next != null) {
             this.head = this.head.next;
-            console.log("!" + this.head.data);
         }
         this.head.next = new Node(newNodeData);
-        console.log("created" + this.head.next.data);
+        this.head = this.root;
+    }
+
+    pop() {
+        while (this.head.next.next != null) {
+            this.head = this.head.next;
+        }
+        this.head.next = null;
         this.head = this.root;
     }
 
     printData() {
         console.log(this.head.data);
-        while (this.head.next != null){
-                this.head = this.head.next;
-                console.log(this.head.data)
-            }
+        while (this.head.next != null) {
+            this.head = this.head.next;
+            console.log(this.head.data)
+        }
     }
 }
 
@@ -33,7 +38,8 @@ class Node {
 
 let testList = new LinkedList("A");
 
-//testList.addNode("B");
-//testList.addNode("C");
-//testList.addNode("D");
+testList.addNode("B");
+testList.addNode("C");
+testList.addNode("D");
+testList.pop();
 testList.printData();
